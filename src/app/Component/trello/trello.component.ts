@@ -85,13 +85,25 @@ export class TrelloComponent implements OnInit {
         this.isadd=!this.isadd
 
     }
+    type:string='';
     updateTask()
     {
+      if(this.type=='task'){
+
+
       this.tasks[this.updatedIndex].Title = this.todoForm.value.item;
       this.tasks[this.updatedIndex].Completed = false;
       this.todoForm.reset();
       this.updatedIndex = undefined;
       this.isEditEnabled = false;
+    }
+    else {
+      this.inprogress[this.updatedIndex].Title = this.todoForm.value.item;
+      this.inprogress[this.updatedIndex].Completed = false;
+      this.todoForm.reset();
+      this.updatedIndex = undefined;
+      this.isEditEnabled = false;
+    }
     }
     deleteTask(taskId:number){
       this.tasks.splice(taskId,1);
@@ -104,6 +116,13 @@ export class TrelloComponent implements OnInit {
     }
 
     onEditTask(task:Task,TaskId:number)
+    {
+      this.todoForm.controls['item'].setValue(task.Title);
+      this.updatedIndex = TaskId;
+      this.isEditEnabled = true;
+      this.type='task'
+    }
+    onEditprogressTask(task:Task,TaskId:number)
     {
       this.todoForm.controls['item'].setValue(task.Title);
       this.updatedIndex = TaskId;
@@ -170,17 +189,7 @@ export class TrelloComponent implements OnInit {
         }
     }
 
-    addCard(list: Task, title: string): void
-    {
-        // Create a new card model
 
-        this.tasks.push({
-          Title : this.todoForm.value.item,
-          Completed:false
-        });
-        // Save the card
-        // this._scrumboardService.createCard(card).subscribe();
-    }
 
 
 }
