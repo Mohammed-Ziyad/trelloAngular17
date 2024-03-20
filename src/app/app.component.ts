@@ -11,5 +11,5 @@ import { NavbarComponent } from "./Component/navbar/navbar.component";
     imports: [RouterOutlet, MatSlideToggleModule, TrelloComponent, NavbarComponent]
 })
 export class AppComponent {
-  title = 'trelloAngular17';
+
 }

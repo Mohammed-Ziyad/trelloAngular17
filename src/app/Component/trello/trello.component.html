@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-3" style="background-color: cadetblue; height: 90vh;">
       <div>
-        <!-- Add To Do -->
+        <!-- Add Or Edite the Task -->
         <mat-card class="m-3 p-3">
           <form [formGroup]="todoForm">
             <mat-form-field appearance="outline">
@@ -110,7 +110,6 @@
                     <button mat-icon-button color="primary"  (click)="onEditprogressTask(item,$index)">
                       <mat-icon>edit</mat-icon></button>
 
-
                   </div>
                 </div>
                 }
@@ -133,6 +132,7 @@
                 (cdkDropListDropped)="drop($event)">
                 @for (item of done; track $index) {
                 <div class="example-box" cdkDrag>{{item.Title}}
+                  <!-- delete Done Task -->
                   <div class="box">
                     <button mat-icon-button color="warn" (click)="deleteDoneTask($index)">
                       <mat-icon>delete</mat-icon></button>
